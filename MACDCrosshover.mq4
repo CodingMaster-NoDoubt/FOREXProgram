@@ -88,17 +88,17 @@ void OnBar()
 int getMACDCrosshover()
   {
    double prev_macd_signal = iMACD(_Symbol, _Period, 12, 26, 9, PRICE_CLOSE, MODE_SIGNAL, si + 1);
-   double prev_macd_main = /*prev_macd_signal + */iMACD(_Symbol, _Period, 12, 26, 9, PRICE_CLOSE, MODE_MAIN, si + 1);
+   double prev_macd_main = iMACD(_Symbol, _Period, 12, 26, 9, PRICE_CLOSE, MODE_MAIN, si + 1);
 
    double macd_signal = iMACD(_Symbol, _Period, 12, 26, 9, PRICE_CLOSE, MODE_SIGNAL, si);
-   double macd_main = /*macd_signal + */iMACD(_Symbol, _Period, 12, 26, 9, PRICE_CLOSE, MODE_MAIN, si);
+   double macd_main = iMACD(_Symbol, _Period, 12, 26, 9, PRICE_CLOSE, MODE_MAIN, si);
 
-   if(prev_macd_main < 0 && macd_main > 0/*prev_macd_main < prev_macd_signal && macd_main > macd_signal*/)
+   if(prev_macd_main < 0 && macd_main > 0)
      {
       return TYPE_BULLISH;
      }
    else
-      if(prev_macd_main > 0 && macd_main < 0/*prev_macd_main > prev_macd_signal && macd_main < macd_signal*/)
+      if(prev_macd_main > 0 && macd_main < 0)
         {
          return TYPE_BEARISH;
         }
